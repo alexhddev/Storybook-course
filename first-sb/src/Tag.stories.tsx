@@ -16,3 +16,17 @@ export const Base: Story = {
     }
 }
 
+export const Pink: Story = {
+    args: {
+        text: "First",
+        color: "pink"
+    }
+};
+
+export const Orange: Story = {
+    args: {
+        text: "First",
+        color: "orange"
+    }
+};
+
