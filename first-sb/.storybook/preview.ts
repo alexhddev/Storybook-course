@@ -8,6 +8,11 @@ const preview: Preview = {
        date: /Date$/i,
       },
     },
+    backgrounds: {
+      options: {
+        yellow: { name: 'Yelow', value: 'rgb(182, 228, 45)' },
+      }
+    },
 
     a11y: {
       // 'todo' - show a11y violations in the test UI only
