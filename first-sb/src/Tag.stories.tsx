@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 const meta = {
     title: 'Cool/Tag',
     component: Tag,
+    tags: ['autodocs'],
     parameters: {
         backgrounds: {
             options: {
@@ -17,6 +18,7 @@ export default meta
 
 type Story = StoryObj<typeof meta>;
 
+/**The base story */
 export const Base: Story = {
     args: {
         text: 'First'

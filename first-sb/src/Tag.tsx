@@ -1,5 +1,7 @@
-type Props = {
+export type Props = {
+    /** The color of the Tag */
     color?: 'red' | 'orange' | 'pink' | 'blue'
+    /** The text of the Tag */
     text: string
 }
 
