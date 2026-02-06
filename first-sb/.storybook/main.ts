@@ -10,7 +10,8 @@ const config: StorybookConfig = {
     "@storybook/addon-vitest",
     "@storybook/addon-a11y",
     "@storybook/addon-docs",
-    "@storybook/addon-onboarding"
+    "@storybook/addon-onboarding",
+    "storybook-addon-test-codegen"
   ],
   "framework": "@storybook/react-vite"
 };

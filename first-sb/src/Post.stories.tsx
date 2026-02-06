@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Post from './Post'
-import { expect, userEvent, fn } from 'storybook/test'
+import { expect, userEvent, fn, within, waitFor } from 'storybook/test';
 
 const meta = {
     title: 'Cool/Post',
@@ -87,3 +87,14 @@ export const AddTagTest: Story = {
         await expect(input).toHaveValue('')
     }
 }
+
+export const BaseGenerated: Story = {
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement.ownerDocument.body);
+        await userEvent.click(await canvas.findByPlaceholderText('Add tag...', { exact: true }));
+        await userEvent.click(await canvas.findByPlaceholderText('Add tag...', { exact: true }));
+        await userEvent.type(await canvas.findByPlaceholderText('Add tag...', { exact: true }), 'Cool');
+        await userEvent.click(await canvas.findByRole('button', { name: 'Add' }));
+        await waitFor(() => expect(canvas.queryByText('Cool', { exact: true })).toBeVisible());
+    }
+};
