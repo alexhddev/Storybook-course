@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Post from './Post'
-import { expect, userEvent } from 'storybook/test'
+import { expect, userEvent, fn } from 'storybook/test'
 
 const meta = {
     title: 'Cool/Post',
@@ -39,9 +39,10 @@ export const WithInitialTagsTest: Story = {
 
 export const DeleteTagTest: Story = {
     args: {
-        initialTags: ['Cool', 'Pretty']
+        initialTags: ['Cool', 'Pretty'],
+        onTagRemoved: fn()
     },
-    play: async ({ canvas }) => {
+    play: async ({ canvas, args }) => {
         const prettyTag = await canvas.findByText('Pretty', {
             selector: 'div'
         })
@@ -58,6 +59,8 @@ export const DeleteTagTest: Story = {
         await user.click(deleteCoolTagButton)
 
         await expect(canvas.queryByText('Cool')).not.toBeInTheDocument()
+
+        await expect(args.onTagRemoved).toHaveBeenCalledWith('Cool')
 
     }
 }
