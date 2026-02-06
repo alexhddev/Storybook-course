@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import Post from './Post'
-import { expect } from 'storybook/test'
+import { expect, userEvent } from 'storybook/test'
 
 const meta = {
     title: 'Cool/Post',
@@ -33,6 +33,31 @@ export const WithInitialTagsTest: Story = {
 
         await expect(prettyTag).toBeInTheDocument()
         await expect(coolTag).toBeInTheDocument()
+
+    }
+}
+
+export const DeleteTagTest: Story = {
+    args: {
+        initialTags: ['Cool', 'Pretty']
+    },
+    play: async ({ canvas }) => {
+        const prettyTag = await canvas.findByText('Pretty', {
+            selector: 'div'
+        })
+        const coolTag = await canvas.findByText('Cool', {
+            selector: 'div'
+        })
+
+        await expect(prettyTag).toBeInTheDocument()
+        await expect(coolTag).toBeInTheDocument()
+
+        const deleteCoolTagButton = canvas.getAllByRole('button')[0]
+
+        const user = userEvent.setup()
+        await user.click(deleteCoolTagButton)
+
+        await expect(canvas.queryByText('Cool')).not.toBeInTheDocument()
 
     }
 }
