@@ -61,6 +61,29 @@ export const DeleteTagTest: Story = {
         await expect(canvas.queryByText('Cool')).not.toBeInTheDocument()
 
         await expect(args.onTagRemoved).toHaveBeenCalledWith('Cool')
+    }
+}
 
+
+export const AddTagTest: Story = {
+    args: {
+        onTagAdded: fn()
+    },
+    play: async ({ canvas, args }) => {
+
+        const input = await canvas.findByPlaceholderText('Add tag...')
+
+        const user = userEvent.setup()
+        await user.type(input, 'Awesome')
+
+        const addButton = await canvas.findByText('Add')
+        await user.click(addButton)
+
+        const newTag = await canvas.findByText('Awesome')
+        await expect(newTag).toBeInTheDocument()
+
+        await expect(args.onTagAdded).toHaveBeenCalledWith('Awesome')
+
+        await expect(input).toHaveValue('')
     }
 }
