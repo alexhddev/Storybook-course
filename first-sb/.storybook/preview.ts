@@ -1,5 +1,8 @@
 import type { Preview } from '@storybook/react-vite'
 import { sb } from 'storybook/test'
+import { initialize, mswLoader } from 'msw-storybook-addon';
+
+initialize();
 
 sb.mock(import('../src/mocks/simple/Utils.ts'), {spy: true})
 
@@ -24,6 +27,7 @@ const preview: Preview = {
       test: 'todo'
     }
   },
+  loaders: [mswLoader]
 };
 
 export default preview;
