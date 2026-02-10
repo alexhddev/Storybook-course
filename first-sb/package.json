@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "test": "vitest"
+    "test": "vitest",
+    "server": "node src/mocks/data/Server.ts"
   },
   "dependencies": {
     "react": "^19.2.0",
