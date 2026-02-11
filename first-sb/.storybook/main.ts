@@ -11,7 +11,8 @@ const config: StorybookConfig = {
     "@storybook/addon-a11y",
     "@storybook/addon-docs",
     "@storybook/addon-onboarding",
-    "storybook-addon-test-codegen"
+    "storybook-addon-test-codegen",
+    '@storybook/addon-designs'
   ],
   framework: "@storybook/react-vite",
   staticDirs:['../public']

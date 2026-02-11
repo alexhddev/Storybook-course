@@ -31,6 +31,13 @@ export const Primary: Story = {
     primary: true,
     label: 'Button',
   },
+  // parameters: {
+  //   design: {
+  //     name: "Wireframe",
+  //     type: "figma",
+  //     url: "https://www.figma.com/file/Klm6pxIZSaJFiOMX5FpTul9F/storybook-addon-designs-sample",
+  //   },
+  // },
 };
 
 export const Secondary: Story = {
